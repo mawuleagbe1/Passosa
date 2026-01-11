@@ -1,0 +1,1950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PASSOSA - Past Students Association</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #283593;
+            --accent-color: #3949ab;
+            --light-color: #e8eaf6;
+            --dark-color: #0d153a;
+            --text-color: #333;
+            --light-text: #fff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .logo-icon {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            font-weight: 600;
+            color: var(--dark-color);
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 35, 126, 0.85), rgba(40, 53, 147, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        /* Mission Highlight */
+        .mission-highlight {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .mission-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: var(--light-color);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .mission-content p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Quick Highlights */
+        .highlights {
+            padding: 80px 0;
+            background-color: #f5f5f5;
+        }
+        
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .highlight-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .highlight-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .highlight-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        /* CTAs */
+        .cta-section {
+            padding: 60px 0;
+            background-color: var(--light-color);
+            text-align: center;
+        }
+        
+        .cta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .cta-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Events & News Preview */
+        .preview-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .preview-card {
+            background-color: #f9f9f9;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .preview-content {
+            padding: 20px;
+        }
+        
+        .preview-card h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .preview-date {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            color: var(--light-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--light-color);
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Page Specific Styles */
+        .page-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .page-content {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        /* About Page */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .value-card {
+            background-color: var(--light-color);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        
+        .objectives-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .objectives-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .objectives-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        /* History Page */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto 0;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--accent-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Executives Page */
+        .executives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .executive-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .executive-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .executive-img {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 4rem;
+        }
+        
+        .executive-info {
+            padding: 20px;
+        }
+        
+        /* Events Page */
+        .event-card {
+            display: flex;
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+        
+        .event-date {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+        }
+        
+        .event-details {
+            padding: 25px;
+            flex-grow: 1;
+        }
+        
+        /* Gallery Page */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: 250px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Contact Page */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: var(--border-radius);
+        }
+        
+        .contact-form {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: var(--border-radius);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+        
+        /* Membership Pages */
+        .membership-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+        
+        .dashboard-sidebar {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: var(--border-radius);
+        }
+        
+        .dashboard-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .payment-method {
+            background-color: var(--light-color);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .payment-history table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .payment-history th, .payment-history td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .payment-history th {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+        
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .document-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                width: 100%;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .event-card {
+                flex-direction: column;
+            }
+            
+            .event-date {
+                flex-direction: row;
+                justify-content: center;
+                gap: 10px;
+            }
+        }
+        
+        /* Hidden pages */
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h1>PASSOSA</h1>
+            </div>
+            
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#" onclick="showPage('about')">About</a></li>
+                    <li><a href="#" onclick="showPage('history')">History</a></li>
+                    <li><a href="#" onclick="showPage('executives')">Executives</a></li>
+                    <li><a href="#" onclick="showPage('events')">Events</a></li>
+                    <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                    <li><a href="#" onclick="showPage('membership')" class="btn btn-outline">Members Area</a></li>
+                </ul>
+            </nav>
+            
+            <div class="auth-buttons">
+                <a href="#" onclick="showPage('login')" class="btn">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <section class="page active" id="home">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h2>Welcome to PASSOSA</h2>
+                <p>The Past Students Association of SOSTECH - Uniting old students to preserve our legacy, support our alma mater, and empower the next generation.</p>
+                <div class="hero-buttons">
+                    <a href="#" onclick="showPage('membership')" class="btn">Become a Member</a>
+                    <a href="#" onclick="showPage('events')" class="btn btn-outline">Upcoming Events</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Highlight -->
+        <section class="mission-highlight">
+            <div class="container">
+                <div class="mission-content">
+                    <h2 class="section-title">Our Mission</h2>
+                    <p>PASSOSA exists to serve as a strong network for alumni, offering avenues for mentorship, development, and collective support to the school and its community.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Highlights -->
+        <section class="highlights">
+            <div class="container">
+                <h2 class="section-title">Quick Highlights</h2>
+                <div class="highlight-grid">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Alumni Engagement</h3>
+                        <p>Connecting past students across generations and locations for networking and collaboration.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <h3>School Development Projects</h3>
+                        <p>Supporting infrastructure and academic improvements at our alma mater.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Annual Reunions & Homecoming</h3>
+                        <p>Celebrating our shared heritage and strengthening bonds through regular gatherings.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3>Mentorship & Leadership Programs</h3>
+                        <p>Guiding current students and young alumni towards personal and professional success.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured CTAs -->
+        <section class="cta-section">
+            <div class="container">
+                <h2 class="section-title">Get Involved</h2>
+                <div class="cta-grid">
+                    <div class="cta-card">
+                        <h3>Become a Member</h3>
+                        <p>Join our growing network of alumni dedicated to development and community impact.</p>
+                        <a href="#" onclick="showPage('membership')" class="btn" style="margin-top: 20px;">Join Now</a>
+                    </div>
+                    <div class="cta-card">
+                        <h3>Pay Your Dues</h3>
+                        <p>Support PASSOSA's initiatives by paying your annual membership dues.</p>
+                        <a href="#" onclick="showPage('pay-dues')" class="btn" style="margin-top: 20px;">Pay Dues</a>
+                    </div>
+                    <div class="cta-card">
+                        <h3>Support a Project</h3>
+                        <p>Contribute to specific school development projects or scholarship funds.</p>
+                        <a href="#" onclick="showPage('contact')" class="btn" style="margin-top: 20px;">Support Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Events Preview -->
+        <section class="preview-section">
+            <div class="container">
+                <h2 class="section-title">Upcoming Events</h2>
+                <div class="preview-grid">
+                    <div class="preview-card">
+                        <div class="preview-content">
+                            <span class="preview-date">June 15, 2023</span>
+                            <h3>Alumni Homecoming</h3>
+                            <p>A gathering that celebrates our shared heritage and strengthens bonds among alumni from all years.</p>
+                            <a href="#" onclick="showPage('events')" style="color: var(--accent-color); font-weight: 600;">Learn More →</a>
+                        </div>
+                    </div>
+                    <div class="preview-card">
+                        <div class="preview-content">
+                            <span class="preview-date">August 5, 2023</span>
+                            <h3>Annual General Meeting (AGM)</h3>
+                            <p>A forum for policy-making, updates, and elections of new executive members.</p>
+                            <a href="#" onclick="showPage('events')" style="color: var(--accent-color); font-weight: 600;">Learn More →</a>
+                        </div>
+                    </div>
+                    <div class="preview-card">
+                        <div class="preview-content">
+                            <span class="preview-date">September 12, 2023</span>
+                            <h3>Mentorship Session with Final Years</h3>
+                            <p>Alumni professionals offering guidance to current final year students on career paths and opportunities.</p>
+                            <a href="#" onclick="showPage('events')" style="color: var(--accent-color); font-weight: 600;">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest News Preview -->
+        <section class="preview-section" style="background-color: #f5f5f5;">
+            <div class="container">
+                <h2 class="section-title">Latest News</h2>
+                <div class="preview-grid">
+                    <div class="preview-card">
+                        <div class="preview-content">
+                            <span class="preview-date">May 10, 2023</span>
+                            <h3>Newly Elected Executives Announced</h3>
+                            <p>Meet the new executive committee that will steer PASSOSA forward for the next two years.</p>
+                            <a href="#" onclick="showPage('news')" style="color: var(--accent-color); font-weight: 600;">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="preview-card">
+                        <div class="preview-content">
+                            <span class="preview-date">April 22, 2023</span>
+                            <h3>PASSOSA Renovation Project Completed</h3>
+                            <p>The science laboratory renovation project funded by alumni donations has been successfully completed.</p>
+                            <a href="#" onclick="showPage('news')" style="color: var(--accent-color); font-weight: 600;">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="preview-card">
+                        <div class="preview-content">
+                            <span class="preview-date">March 15, 2023</span>
+                            <h3>Scholarship Fund Launched</h3>
+                            <p>A new scholarship fund to support brilliant but needy students has been launched with an initial donation of GHS 50,000.</p>
+                            <a href="#" onclick="showPage('news')" style="color: var(--accent-color); font-weight: 600;">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- About Page -->
+    <section class="page" id="about">
+        <div class="page-header">
+            <div class="container">
+                <h2>About PASSOSA</h2>
+                <p>The official association for all past students of [School Name]</p>
+            </div>
+        </div>
+        
+        <div class="page-content">
+            <div class="container">
+                <p>PASSOSA is the official association for all past students of [School Name], formed to promote unity, development, and meaningful engagement among alumni while contributing to the growth and progress of the school.</p>
+                
+                <div style="margin: 60px 0;">
+                    <h3 class="section-title">Our Mission & Vision</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
+                        <div style="background-color: var(--light-color); padding: 30px; border-radius: var(--border-radius);">
+                            <h4 style="color: var(--primary-color); margin-bottom: 15px;"><i class="fas fa-bullseye" style="margin-right: 10px;"></i> Our Mission</h4>
+                            <p>To build a vibrant alumni community that supports members, advances leadership, and contributes to the development of the school and society.</p>
+                        </div>
+                        <div style="background-color: var(--light-color); padding: 30px; border-radius: var(--border-radius);">
+                            <h4 style="color: var(--primary-color); margin-bottom: 15px;"><i class="fas fa-eye" style="margin-right: 10px;"></i> Our Vision</h4>
+                            <p>To become a sustainable and globally recognized alumni body that champions educational excellence and lifelong support for both members and students.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin: 60px 0;">
+                    <h3 class="section-title">Our Core Values</h3>
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <h4>Service</h4>
+                            <p>Commitment to serving our alma mater and community</p>
+                        </div>
+                        <div class="value-card">
+                            <h4>Unity</h4>
+                            <p>Fostering togetherness among alumni across generations</p>
+                        </div>
+                        <div class="value-card">
+                            <h4>Integrity</h4>
+                            <p>Acting with honesty and transparency in all endeavors</p>
+                        </div>
+                        <div class="value-card">
+                            <h4>Leadership</h4>
+                            <p>Leading by example in community and national development</p>
+                        </div>
+                        <div class="value-card">
+                            <h4>Collaboration</h4>
+                            <p>Working together to achieve common goals</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin: 60px 0;">
+                    <h3 class="section-title">Our Objectives</h3>
+                    <p>PASSOSA aims to:</p>
+                    <ul class="objectives-list">
+                        <li>Foster strong relationships among past students</li>
+                        <li>Support academic and infrastructure development</li>
+                        <li>Create mentorship, networking, and career opportunities</li>
+                        <li>Mobilize resources for student welfare and school improvement</li>
+                        <li>Organize events and programs that connect alumni</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Page -->
+    <section class="page" id="history">
+        <div class="page-header">
+            <div class="container">
+                <h2>History of the School & Association</h2>
+                <p>Our journey from establishment to impact</p>
+            </div>
+        </div>
+        
+        <div class="page-content">
+            <div class="container">
+                <h3 class="section-title">School Background</h3>
+                <p>Founded in [Year], [School Name] has established itself as a center of academic excellence, character formation, and leadership. Over the years, the school has produced graduates who have contributed significantly in various sectors including education, health, business, government, technology, and entrepreneurship.</p>
+                
+                <div style="margin: 60px 0;">
+                    <h3 class="section-title">Formation of PASSOSA</h3>
+                    <p>PASSOSA was formed to unite old students and create a structured platform to give back to the school, engage in networking, and promote collective welfare. Since its establishment, the association has launched several impactful initiatives.</p>
+                </div>
+                
+                <div style="margin: 60px 0;">
+                    <h3 class="section-title">Key Milestones</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h4>Formation of PASSOSA</h4>
+                                <p>The association was officially formed with an initial membership of 50 alumni.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h4>First Alumni Homecoming</h4>
+                                <p>Successful organization of the first homecoming event with over 200 attendees.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h4>First Renovation Fundraiser</h4>
+                                <p>Raised funds for the first major school renovation project - the library upgrade.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h4>Scholarship Fund Initiated</h4>
+                                <p>Established the PASSOSA Scholarship Fund to support brilliant but needy students.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h4>Digital Membership System Introduced</h4>
+                                <p>Launched the online membership portal to streamline registration and dues payment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin: 60px 0;">
+                    <h3 class="section-title">Impact on the School</h3>
+                    <p>PASSOSA has supported numerous initiatives that have directly benefited the school and its students:</p>
+                    <div class="highlight-grid" style="margin-top: 30px;">
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h4>Library Improvements</h4>
+                            <p>Funding for new books, furniture, and digital resources</p>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <h4>Laboratory Upgrades</h4>
+                            <p>Modernization of science labs with new equipment</p>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h4>Prize & Award Ceremonies</h4>
+                            <p>Sponsoring awards for academic excellence and leadership</p>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h4>Scholarship Support</h4>
+                            <p>Financial aid for deserving students to complete their education</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Executives Page -->
+    <section class="page" id="executives">
+        <div class="page-header">
+            <div class="container">
+                <h2>Executives & Leadership</h2>
+                <p>Meet the team steering PASSOSA forward</p>
+            </div>
+        </div>
+        
+        <div class="page-content">
+            <div class="container">
+                <p>PASSOSA is governed by an elected Executive Committee responsible for strategy, operations, and membership affairs.</p>
+                
+                <h3 class="section-title" style="margin-top: 60px;">Current Executives</h3>
+                <div class="executives-grid">
+                    <div class="executive-card">
+                        <div class="executive-img">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="executive-info">
+                            <h4>President</h4>
+                            <p>Leads the association and represents PASSOSA at all official functions.</p>
+                        </div>
+                    </div>
+                    <div class="executive-card">
+                        <div class="executive-img">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="executive-info">
+                            <h4>Vice President</h4>
+                            <p>Assists the President and acts in their absence.</p>
+                        </div>
+                    </div>
+                    <div class="executive-card">
+                        <div class="executive-img">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="executive-info">
+                            <h4>General Secretary</h4>
+                            <p>Handles correspondence, records, and official documentation.</p>
+                        </div>
+                    </div>
+                    <div class="executive-card">
+                        <div class="executive-img">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="executive-info">
+                            <h4>Financial Secretary</h4>
+                            <p>Manages financial records and transactions.</p>
+                        </div>
+                    </div>
+                    <div class="executive-card">
+                        <div class="executive-img">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="executive-info">
+                            <h4>Treasurer</h4>
+                            <p>Oversees funds and ensures proper financial management.</p>
+                        </div>
+                    </div>
+                    <div class="executive-card">
+                        <div class="executive-img">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="executive-info">
+                            <h4>Organizing Secretary</h4>
+                            <p>Coordinates events and programs.</p>
+                        </div>
+                    </div>
+                    <div class="executive-card">
+                        <div class="executive-img">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="executive-info">
+                            <h4>Welfare/Projects Coordinator</h4>
+                            <p>Oversees welfare matters and project implementation.</p>
+                        </div>
+                    </div>
+                    <div class="executive-card">
+                        <div class="executive-img">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="executive-info">
+                            <h4>Public Relations Officer (PRO)</h4>
+                            <p>Manages communication and public image of PASSOSA.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin: 60px 0;">
+                    <h3 class="section-title">Committees</h3>
+                    <div class="highlight-grid">
+                        <div class="highlight-card">
+                            <h4>Events & Programs</h4>
+                            <p>Plans and executes all PASSOSA events and activities.</p>
+                        </div>
+                        <div class="highlight-card">
+                            <h4>Welfare & Membership</h4>
+                            <p>Addresses member welfare and manages membership affairs.</p>
+                        </div>
+                        <div class="highlight-card">
+                            <h4>Finance & Audit</h4>
+                            <p>Oversees financial management and conducts audits.</p>
+                        </div>
+                        <div class="highlight-card">
+                            <h4>Projects & Development</h4>
+                            <p>Identifies and manages school development projects.</p>
+                        </div>
+                        <div class="highlight-card">
+                            <h4>Communications & PR</h4>
+                            <p>Handles internal and external communications.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Page -->
+    <section class="page" id="events">
+        <div class="page-header">
+            <div class="container">
+                <h2>Events & Programs</h2>
+                <p>Promoting unity, development, and engagement among alumni</p>
+            </div>
+        </div>
+        
+        <div class="page-content">
+            <div class="container">
+                <p>PASSOSA organizes events that promote unity, development, and engagement among alumni.</p>
+                
+                <h3 class="section-title" style="margin-top: 60px;">Major Events</h3>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <span style="font-size: 2rem; font-weight: bold;">15</span>
+                        <span>June 2023</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Homecoming & Reunion</h3>
+                        <p>A gathering that celebrates our shared heritage and strengthens bonds among alumni from all graduating years. Features include campus tours, networking sessions, cultural displays, and an awards ceremony.</p>
+                        <a href="#" class="btn" style="margin-top: 15px;">Register for Event</a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <span style="font-size: 2rem; font-weight: bold;">05</span>
+                        <span>August 2023</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Annual General Meeting (AGM)</h3>
+                        <p>A forum for policy-making, updates, and elections. Members review the year's activities, financial reports, and vote on important matters affecting the association.</p>
+                        <a href="#" class="btn" style="margin-top: 15px;">View Agenda</a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <span style="font-size: 2rem; font-weight: bold;">12</span>
+                        <span>September 2023</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Mentorship & Career Talks</h3>
+                        <p>Alumni professionals offering guidance to current students on career paths, university admissions, and professional development. Industry-specific breakout sessions available.</p>
+                        <a href="#" class="btn" style="margin-top: 15px;">Volunteer as Mentor</a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <span style="font-size: 2rem; font-weight: bold;">20</span>
+                        <span>October 2023</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Fundraising Dinner</h3>
+                        <p>An elegant evening to raise funds for the PASSOSA Scholarship Fund and upcoming school development projects. Features keynote speakers, auction, and entertainment.</p>
+                        <a href="#" class="btn" style="margin-top: 15px;">Purchase Tickets</a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <span style="font-size: 2rem; font-weight: bold;">03</span>
+                        <span>December 2023</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Sports & Social Events</h3>
+                        <p>Annual alumni sports competition and family fun day. Includes soccer, volleyball, track events, and activities for all ages. Strengthens the social fabric of the alumni body.</p>
+                        <a href="#" class="btn" style="margin-top: 15px;">Join a Team</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Page -->
+    <section class="page" id="contact">
+        <div class="page-header">
+            <div class="container">
+                <h2>Contact PASSOSA</h2>
+                <p>Get in touch with us for inquiries, partnerships, and alumni engagement</p>
+            </div>
+        </div>
+        
+        <div class="page-content">
+            <div class="container">
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Contact Details</h3>
+                        <div style="margin-top: 30px;">
+                            <p><strong>Email:</strong>info@passosa.org</p>
+                            <p><strong>Phone/WhatsApp:</strong> +233 xxx xxx xxx</p>
+                            <p><strong>Social Media:</strong></p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                            <p style="margin-top: 20px;"><strong>Mailing Address:</strong><br>
+                            PASSOSA Secretariat<br>
+                            [SOSTECH]<br>
+                            [SOKODE], Ghana</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Send Us a Message</h3>
+                        <form id="contactForm" style="margin-top: 30px;">
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" id="fullName" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone (Optional)</label>
+                                <input type="tel" id="phone" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" class="form-control" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership System Pages -->
+    
+    <!-- Membership Registration -->
+    <section class="page" id="membership">
+        <div class="page-header">
+            <div class="container">
+                <h2>Membership Registration</h2>
+                <p>Join PASSOSA and become part of a growing network of alumni</p>
+            </div>
+        </div>
+        
+        <div class="page-content">
+            <div class="container">
+                <div class="membership-form">
+                    <h3 class="section-title">Join PASSOSA</h3>
+                    <p style="text-align: center; margin-bottom: 30px;">Membership is open to all past students of [School Name] regardless of year or program of graduation.</p>
+                    
+                    <form id="registrationForm">
+                        <div class="form-group">
+                            <label for="regFullName">Full Name *</label>
+                            <input type="text" id="regFullName" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="yearCompletion">Year of Completion *</label>
+                            <input type="number" id="yearCompletion" class="form-control" min="1950" max="2025" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="program">Program/Class *</label>
+                            <input type="text" id="program" class="form-control" required placeholder="e.g., Science, Business, Arts">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="regEmail">Email *</label>
+                            <input type="email" id="regEmail" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="regPhone">Phone *</label>
+                            <input type="tel" id="regPhone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="occupation">Occupation</label>
+                            <input type="text" id="occupation" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="location">Current Location (Region/Country)</label>
+                            <input type="text" id="location" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Create Password *</label>
+                            <input type="password" id="password" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password *</label>
+                            <input type="password" id="confirmPassword" class="form-control" required>
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%;">Register as Member</button>
+                    </form>
+                    
+                    <p style="text-align: center; margin-top: 20px;">Already have an account? <a href="#" onclick="showPage('login')" style="color: var(--accent-color);">Login here</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Page -->
+    <section class="page" id="login">
+        <div class="page-header">
+            <div class="container">
+                <h2>Member Login</h2>
+                <p>Access your PASSOSA member dashboard</p>
+            </div>
+        </div>
+        
+        <div class="page-content">
+            <div class="container">
+                <div class="membership-form" style="max-width: 500px;">
+                    <h3 class="section-title">Welcome Back</h3>
+                    
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">Email</label>
+                            <input type="email" id="loginEmail" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" class="form-control" required>
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%;" onclick="loginMember()">Login</button>
+                    </form>
+                    
+                    <p style="text-align: center; margin-top: 20px;">Not a member yet? <a href="#" onclick="showPage('membership')" style="color: var(--accent-color);">Register here</a></p>
+                    <p style="text-align: center; margin-top: 10px;"><a href="#" style="color: var(--accent-color);">Forgot your password?</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Member Dashboard -->
+    <section class="page" id="dashboard">
+        <div class="page-header">
+            <div class="container">
+                <h2>Member Dashboard</h2>
+                <p>Welcome, <span id="memberName">Member Name</span>!</p>
+            </div>
+        </div>
+        
+        <div class="page-content">
+            <div class="container">
+                <div class="dashboard">
+                    <div class="dashboard-sidebar">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links" style="margin-top: 20px;">
+                            <li><a href="#" onclick="showPage('dashboard')"><i class="fas fa-tachometer-alt" style="margin-right: 10px;"></i> Dashboard</a></li>
+                            <li><a href="#" onclick="showPage('pay-dues')"><i class="fas fa-money-check-alt" style="margin-right: 10px;"></i> Pay Dues</a></li>
+                            <li><a href="#" onclick="showPage('payment-history')"><i class="fas fa-history" style="margin-right: 10px;"></i> Payment History</a></li>
+                            <li><a href="#" onclick="showPage('documents')"><i class="fas fa-file-alt" style="margin-right: 10px;"></i> Documents</a></li>
+                            <li><a href="#" onclick="showPage('events')"><i class="fas fa-calendar-alt" style="margin-right: 10px;"></i> Events</a></li>
+                            <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt" style="margin-right: 10px;"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="dashboard-content">
+                        <h3>Your Dashboard</h3>
+                        <p>Your dashboard allows you to manage your membership and engage with PASSOSA activities.</p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px;">
+                            <div style="background-color: var(--light-color); padding: 20px; border-radius: var(--border-radius); text-align: center;">
+                                <h4>Membership Status</h4>
+                                <p style="color: green; font-weight: bold; margin-top: 10px;">Active</p>
+                            </div>
+                            <div style="background-color: var(--light-color); padding: 20px; border-radius: var(--border-radius); text-align: center;">
+                                <h4>Annual Dues</h4>
+                                <p style="color: var(--accent-color); font-weight: bold; margin-top: 10px;">GHS 100.00</p>
+                            </div>
+                            <div style="background-color: var(--light-color); padding: 20px; border-radius: var(--border-radius); text-align: center;">
+                                <h4>Next Event</h4>
+                                <p style="margin-top: 10px;">Homecoming - June 15</p>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 40px;">
+                            <h4>Recent Activities</h4>
+                            <ul class="objectives-list" style="margin-top: 15px;">
+                                <li>Your membership registration was confirmed on May 1, 2023</li>
+                                <li>You last logged in on May 10, 2023</li>
+                                <li>Your annual dues for 2023 are pending</li>
+                                <li>You have registered for the Homecoming event</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="margin-top: 40px;">
+                            <h4>Update Your Profile</h4>
+                            <p>Keep your information current to stay connected with relevant opportunities.</p>
+                            <a href="#" class="btn" style="margin-top: 15px;">Edit Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pay Dues Page -->
+    <section class="page" id="pay-dues">
+        <div class="page-header">
+            <div class="container">
+                <h2>Pay Your Dues</h2>
+                <p>Support PASSOSA initiatives by paying your annual membership dues</p>
+            </div>
+        </div>
+        
+        <div class="page-content">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h3 class="section-title">Purpose of Dues</h3>
+                    <p>Dues enable the association to:</p>
+                    <ul class="objectives-list">
+                        <li>Run administrative operations</li>
+                        <li>Support school development projects</li>
+                        <li>Fund alumni events</li>
+                        <li>Provide welfare and support services</li>
+                    </ul>
+                    
+                    <div style="margin: 40px 0; padding: 30px; background-color: var(--light-color); border-radius: var(--border-radius); text-align: center;">
+                        <h3>Dues Structure</h3>
+                        <p style="font-size: 1.5rem; font-weight: bold; color: var(--primary-color); margin-top: 10px;">Annual Dues: GHS 100.00</p>
+                        <p style="margin-top: 10px;">Optional Support Donations welcome</p>
+                    </div>
+                    
+                    <h3 class="section-title">Payment Methods</h3>
+                    <p>Choose your preferred payment method (Ghana Context):</p>
+                    
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <i class="fas fa-mobile-alt" style="font-size: 2rem; margin-bottom: 15px;"></i>
+                            <h4>Mobile Money</h4>
+                            <p>MTN, Vodafone, AirtelTigo</p>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fas fa-credit-card" style="font-size: 2rem; margin-bottom: 15px;"></i>
+                            <h4>Bank Card</h4>
+                            <p>Visa, Mastercard</p>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fas fa-university" style="font-size: 2rem; margin-bottom: 15px;"></i>
+                            <h4>Bank Transfer</h4>
+                            <p>Direct bank transfer</p>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fas fa-code" style="font-size: 2rem; margin-bottom: 15px;"></i>
+                            <h4>USSD</h4>
+                            <p>Shortcode payment</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 40px; text-align: center;">
+                        <p>Members receive digital receipts and can view their payment history at any time.</p>
+                        <a href="#" onclick="simulatePayment()" class="btn" style="margin-top: 20px;">Proceed to Payment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment History -->
+    <section class="page" id="payment-history">
+        <div class="page-header">
+            <div class="container">
+                <h2>Payment History</h2>
+                <p>Track your payments to PASSOSA</p>
+            </div>
+        </div>
+        
+        <div class="page-content">
+            <div class="container">
+                <div class="dashboard-content">
+                    <h3>Your Payment Records</h3>
+                    <p>Below is a history of all your payments to PASSOSA.</p>
+                    
+                    <div class="payment-history">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                    <th>Receipt</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>May 15, 2026</td>
+                                    <td>Annual Dues 2026</td>
+                                    <td>GHS 100.00</td>
+                                    <td>Dues</td>
+                                    <td style="color: green;">Paid</td>
+                                    <td><a href="#" class="btn" style="padding: 5px 10px; font-size: 0.9rem;">Download</a></td>
+                                </tr>
+                                <tr>
+                                    <td>June 20, 2026</td>
+                                    <td>Scholarship Fund Donation</td>
+                                    <td>GHS 50.00</td>
+                                    <td>Donation</td>
+                                    <td style="color: green;">Paid</td>
+                                    <td><a href="#" class="btn" style="padding: 5px 10px; font-size: 0.9rem;">Download</a></td>
+                                </tr>
+                                <tr>
+                                    <td>January 10, 2026</td>
+                                    <td>Annual Dues 2026</td>
+                                    <td>GHS 100.00</td>
+                                    <td>Dues</td>
+                                    <td style="color: orange;">Pending</td>
+                                    <td><a href="#" class="btn" style="padding: 5px 10px; font-size: 0.9rem;">Pay Now</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div style="margin-top: 30px; text-align: center;">
+                        <a href="#" onclick="showPage('pay-dues')" class="btn">Make New Payment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documents & Resources -->
+    <section class="page" id="documents">
+        <div class="page-header">
+            <div class="container">
+                <h2>Documents & Resources</h2>
+                <p>Access official PASSOSA documents and resources</p>
+            </div>
+        </div>
+        
+        <div class="page-content">
+            <div class="container">
+                <div class="dashboard-content">
+                    <h3>Official Documents</h3>
+                    <p>Access official documents including constitution, reports, and meeting minutes.</p>
+                    
+                    <div class="documents-grid">
+                        <div class="document-card">
+                            <h4>Constitution & Bylaws</h4>
+                            <p>The official governing document of PASSOSA.</p>
+                            <a href="#" class="btn" style="margin-top: 15px; padding: 8px 15px;">Download</a>
+                        </div>
+                        <div class="document-card">
+                            <h4>AGM Reports</h4>
+                            <p>Annual General Meeting reports and minutes.</p>
+                            <a href="#" class="btn" style="margin-top: 15px; padding: 8px 15px;">Download</a>
+                        </div>
+                        <div class="document-card">
+                            <h4>Financial Reports</h4>
+                            <p>Annual financial statements and audit reports.</p>
+                            <a href="#" class="btn" style="margin-top: 15px; padding: 8px 15px;">Download</a>
+                        </div>
+                        <div class="document-card">
+                            <h4>Minutes of Meetings</h4>
+                            <p>Records of executive and committee meetings.</p>
+                            <a href="#" class="btn" style="margin-top: 15px; padding: 8px 15px;">Download</a>
+                        </div>
+                        <div class="document-card">
+                            <h4>Scholarship Documents</h4>
+                            <p>Application forms and guidelines for scholarships.</p>
+                            <a href="#" class="btn" style="margin-top: 15px; padding: 8px 15px;">Download</a>
+                        </div>
+                        <div class="document-card">
+                            <h4>Project Documents</h4>
+                            <p>Proposals and reports for school development projects.</p>
+                            <a href="#" class="btn" style="margin-top: 15px; padding: 8px 15px;">Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Page -->
+    <section class="page" id="news">
+        <div class="page-header">
+            <div class="container">
+                <h2>News & Updates</h2>
+                <p>Stay informed on PASSOSA activities and community achievements</p>
+            </div>
+        </div>
+        
+        <div class="page-content">
+            <div class="container">
+                <div class="preview-grid">
+                    <div class="preview-card">
+                        <div class="preview-content">
+                            <span class="preview-date">May 10, 2023</span>
+                            <h3>Newly Elected Executives Announced</h3>
+                            <p>The results of the 2023 PASSOSA elections have been announced. Meet the new executive committee that will steer the association forward for the next two years.</p>
+                            <a href="#" style="color: var(--accent-color); font-weight: 600;">Read Full Article →</a>
+                        </div>
+                    </div>
+                    <div class="preview-card">
+                        <div class="preview-content">
+                            <span class="preview-date">April 22, 2026</span>
+                            <h3>Official Communication on Dues</h3>
+                            <p>Important update regarding the 2026 membership dues structure and payment deadlines. All members are encouraged to pay their dues before the AGM in August.</p>
+                            <a href="#" style="color: var(--accent-color); font-weight: 600;">Read Full Article →</a>
+                        </div>
+                    </div>
+                    <div class="preview-card">
+                        <div class="preview-content">
+                            <span class="preview-date">April 15, 2026</span>
+                            <h3>School Development Projects Completed</h3>
+                            <p>The science laboratory renovation project funded by alumni donations has been successfully completed. The new lab features modern equipment and improved facilities.</p>
+                            <a href="#" style="color: var(--accent-color); font-weight: 600;">Read Full Article →</a>
+                        </div>
+                    </div>
+                    <div class="preview-card">
+                        <div class="preview-content">
+                            <span class="preview-date">March 25, 2026</span>
+                            <h3>Alumni Achievements & Stories</h3>
+                            <p>Celebrating the achievements of our alumni: Dr. Amina Mohammed appointed as Chief Medical Officer at Regional Hospital.</p>
+                            <a href="#" style="color: var(--accent-color); font-weight: 600;">Read Full Article →</a>
+                        </div>
+                    </div>
+                    <div class="preview-card">
+                        <div class="preview-content">
+                            <span class="preview-date">March 15, 2026</span>
+                            </span>
+                            <h3>Scholarship Applications Open</h3>
+                            <p>The PASSOSA Scholarship Fund is now accepting applications for the 2026/2027 academic year. Five full scholarships available for brilliant but needy students.</p>
+                            <a href="#" style="color: var(--accent-color); font-weight: 600;">Read Full Article →</a>
+                        </div>
+                    </div>
+                    <div class="preview-card">
+                        <div class="preview-content">
+                            <span class="preview-date">February 28, 2026</span>
+                            <h3>PASSOSA Digital Platform Launch</h3>
+                            <p>Our new digital membership system is now live! Members can now register, pay dues, and access resources online through the member dashboard.</p>
+                            <a href="#" style="color: var(--accent-color); font-weight: 600;">Read Full Article →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Page -->
+    <section class="page" id="gallery">
+        <div class="page-header">
+            <div class="container">
+                <h2>Gallery</h2>
+                <p>Relive key moments through images that tell the PASSOSA story</p>
+            </div>
+        </div>
+        
+        <div class="page-content">
+            <div class="container">
+                <div style="margin-bottom: 40px; text-align: center;">
+                    <button class="btn filter-btn active" data-filter="all">All</button>
+                    <button class="btn btn-outline filter-btn" data-filter="reunions">Reunions & Homecomings</button>
+                    <button class="btn btn-outline filter-btn" data-filter="visits">School Visits</button>
+                    <button class="btn btn-outline filter-btn" data-filter="projects">Fundraising & Projects</button>
+                    <button class="btn btn-outline filter-btn" data-filter="mentorship">Mentorship Sessions</button>
+                </div>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="reunions">
+                        <span>2026 Homecoming Event</span>
+                    </div>
+                    <div class="gallery-item" data-category="visits">
+                        <span>Executive Visit to School</span>
+                    </div>
+                    <div class="gallery-item" data-category="projects">
+                        <span>Laboratory Renovation Project</span>
+                    </div>
+                    <div class="gallery-item" data-category="mentorship">
+                        <span>Career Talk Session</span>
+                    </div>
+                    <div class="gallery-item" data-category="reunions">
+                        <span>30th Anniversary Celebration</span>
+                    </div>
+                    <div class="gallery-item" data-category="projects">
+                        <span>Library Donation Ceremony</span>
+                    </div>
+                    <div class="gallery-item" data-category="mentorship">
+                        <span>Alumni-Student Networking</span>
+                    </div>
+                    <div class="gallery-item" data-category="reunions">
+                        <span>Annual General Meeting 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="logo" style="margin-bottom: 20px;">
+                        <div class="logo-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h1>PASSOSA</h1>
+                    </div>
+                    <p>The Past Students Association of Sostech, uniting alumni to preserve our legacy and empower future generations.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showPage('home')">Home</a></li>
+                        <li><a href="#" onclick="showPage('about')">About PASSOSA</a></li>
+                        <li><a href="#" onclick="showPage('events')">Events & Programs</a></li>
+                        <li><a href="#" onclick="showPage('news')">News & Updates</a></li>
+                        <li><a href="#" onclick="showPage('gallery')">Gallery</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3>Members Area</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showPage('membership')">Become a Member</a></li>
+                        <li><a href="#" onclick="showPage('login')">Member Login</a></li>
+                        <li><a href="#" onclick="showPage('pay-dues')">Pay Your Dues</a></li>
+                        <li><a href="#" onclick="showPage('documents')">Documents & Resources</a></li>
+                        <li><a href="#" onclick="showPage('contact')">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@passosa.org</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> +233 xxx xxx xxx</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> SOSTECH, Sokode, Ghana</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 PASSOSA - Past Students Association of Sokode Senior High Technical School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show the selected page
+            const activePage = document.getElementById(pageId);
+            if (activePage) {
+                activePage.classList.add('active');
+            }
+            
+            // Close mobile menu if open
+            const nav = document.getElementById('mainNav');
+            nav.classList.remove('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            return false;
+        }
+        
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('active');
+        });
+        
+        // Form submission handlers
+        document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+        
+        document.getElementById('registrationForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Registration submitted successfully! Welcome to PASSOSA.');
+            showPage('login');
+        });
+        
+        document.getElementById('loginForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            loginMember();
+        });
+        
+        // Simulate member login
+        function loginMember() {
+            const email = document.getElementById('loginEmail')?.value || 'member@example.com';
+            const name = email.split('@')[0];
+            document.getElementById('memberName').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+            showPage('dashboard');
+            return false;
+        }
+        
+        // Logout function
+        function logout() {
+            showPage('home');
+            return false;
+        }
+        
+        // Simulate payment
+        function simulatePayment() {
+            if (confirm('You will be redirected to the payment gateway. Continue?')) {
+                alert('Payment successful! Thank you for your contribution to PASSOSA.');
+                showPage('payment-history');
+            }
+        }
+        
+        // Gallery filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filterValue = this.getAttribute('data-filter');
+                
+                // Filter gallery items
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Initialize with home page
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
